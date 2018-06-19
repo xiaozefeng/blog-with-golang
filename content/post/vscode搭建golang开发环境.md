@@ -1,10 +1,11 @@
 ---
-title: "Vscode搭建golang开发环境"
+title: "vscode搭建golang开发环境"
 date: 2018-06-13T21:46:56+08:00
 draft: true
 ---
 
 <!--more-->
+
 ## 安装go
 ```bash
 brew install go
@@ -38,6 +39,7 @@ cmd + , 打开用户设置, 输入以下
 ```
 
 ## 安装插件 ,请参考 go get 如何设置代理
+```bash
 go get -u -v github.com/nsf/gocode
 go get -u -v github.com/rogpeppe/godef
 go get -u -v github.com/golang/lint/golint
@@ -47,4 +49,5 @@ go get -u -v golang.org/x/tools/cmd/gorename
 go get -u -v github.com/tpng/gopkgs
 go get -u -v github.com/newhook/go-symbols
 go get -u -v golang.org/x/tools/cmd/guru
+```
 

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.42.1" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Docker数据管理 &middot; peter&#39;s blog</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="peter&#39;s blog" />
+
+  
+</head>
+
+  <body class=" ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://nicefood.xin/"><h1>peter&#39;s blog</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://nicefood.xin/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2018. All rights reserved. </p>
+  </div>
+</div>
+
+    <div class="content container">
+    <div class="post">
+  <h1>Docker数据管理</h1>
+  <span class="post-date">Sun, Jun 17, 2018</span>
+  <p></p>
+
+<h2 id="数据卷-data-volumes">数据卷(Data Volumes)</h2>
+
+<blockquote>
+<p>容器内数据直接映射到本地主机环境</p>
+</blockquote>
+
+<ul>
+<li>数据卷可以在容器之间共享和重用，容器键传递数据将变得高效方便</li>
+<li>对数据卷内数据修改会立马生效，无论是容器内操作还是本地操作</li>
+<li>卷会一直存在，直到没有容器使用，可以安全的卸载它</li>
+</ul>
+
+<h3 id="将本地文件内容映射到nginx">将本地文件内容映射到nginx</h3>
+
+<pre><code class="language-bash"># docker run -d -p 本地端口:80 --name 容器名称 -v 你需要映射的文件夹:/usr/share/nginx/html nginx
+# 80是nginx默认的端口
+# /usr/share/nginx/html是nginx容器默认的root目录
+docker run -d -p 80:80 --name contentNginx -v $PWD/public:/usr/share/nginx/html nginx
+</code></pre>
+
+<ul>
+<li>你需要映射的文件夹:/usr/share/nginx/html后面可以加<code>:ro</code>,这样容器就不能对数据卷内容做修改了</li>
+</ul>
+
+<h2 id="数据卷容器">数据卷容器</h2>
+
+<blockquote>
+<p>使用特定的容器维护数据卷
+如果用户需要在多个容器之间共享一些持续更新的数据，最简单的方式是使用数据卷容器</p>
+</blockquote>
+
+<h3 id="quickstart">QuickStart</h3>
+
+<pre><code class="language-bash"># 创建一个容器，在容器内挂载一个数据卷 `dbdata`
+docker run -it  -v /dbdata --name dbdata ubuntu
+# 可以在其他容器中使用--volumes-from 
+docker run -it --volumes-from dbdata --name db1 ubuntu
+docker run -it --volumes-from dbdata --name db2 ubuntu
+# dbdata、db1、db2容器在/dbdata目录下的写入，其他容器都可以看到
+</code></pre>
+
+<h3 id="使用数据卷容器备份数据">使用数据卷容器备份数据</h3>
+
+<pre><code class="language-bash"># 将数据卷容器中的数据备份到本地目录
+docker run --volumes-from dbdata -v $PWD:/backup --name worker ubuntu tar cvf /backup/backup.tar /dbdata
+# 这个命令有点复杂, 首先使用ubuntu创建了一个容器worker,使用--volumes-from dbdata 参数让worker容器挂载dbdata容器的数据卷，使用-v $PWD:/backup 参数来挂载本地的当前目录到worker容器的/backup目录
+# worker 容器启动后，使用tar cvf /backup/backup.tar /dbdata命令来将/dbdata下的内容备份到/backup/backup.tar，也就是宿主机的当前目录下
+</code></pre>
+
+<h3 id="使用数据卷容器恢复数据">使用数据卷容器恢复数据</h3>
+
+<pre><code class="language-bash"># 首先创建一个带有数据卷的容器dbdata2
+docker run -v /dbdata --name dbdata2 ubuntu /bin/bash
+# 创建一个新的容器，挂架dbdata2的容器，并且使用ubtar 解压备份的文件到所挂载的容器卷中
+docker run --volumes-from dbdata2 -v $PWD:/backup busybox tar xvf /backup/backup.tar
+# 需要注意的是，这个backup.tar需要使用上面备份的backup.tar,否则不能讲backup的数据解压到/dbdata目录下
+</code></pre>
+</div>
+
+
+    </div>
+
+    
+  </body>
+</html>

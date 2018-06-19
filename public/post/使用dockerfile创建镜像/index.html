@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.42.1" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>使用Dockerfile创建镜像 &middot; peter&#39;s blog</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="peter&#39;s blog" />
+
+  
+</head>
+
+  <body class=" ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://nicefood.xin/"><h1>peter&#39;s blog</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://nicefood.xin/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2018. All rights reserved. </p>
+  </div>
+</div>
+
+    <div class="content container">
+    <div class="post">
+  <h1>使用Dockerfile创建镜像</h1>
+  <span class="post-date">Mon, Jun 18, 2018</span>
+  <p></p>
+
+<h2 id="dockerfile基本机构">Dockerfile基本机构</h2>
+
+<h3 id="dcokerfile-分为四部分">Dcokerfile 分为四部分</h3>
+
+<ol>
+<li>基础镜像信息</li>
+<li>维护者信息</li>
+<li>镜像操作指令</li>
+<li>容器启动时执行指令</li>
+</ol>
+
+<h3 id="指令说明">指令说明</h3>
+
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>FROM</td>
+<td>指定所创建镜像的基础镜像</td>
+</tr>
+
+<tr>
+<td>MAINTAINER</td>
+<td>指定维护者信息</td>
+</tr>
+
+<tr>
+<td>RUN</td>
+<td>运行指令</td>
+</tr>
+
+<tr>
+<td>CMD</td>
+<td>指定启动容器时默认执行的命令</td>
+</tr>
+
+<tr>
+<td>LABEL</td>
+<td>执行生抽镜像的元数据标签信息</td>
+</tr>
+
+<tr>
+<td>EXPOSE</td>
+<td>声明镜像内服务所监听的端口</td>
+</tr>
+
+<tr>
+<td>ENV</td>
+<td>指定环境变量</td>
+</tr>
+
+<tr>
+<td>ADD</td>
+<td>复制指定的<code>src</code>路径下的的内容到容器的<code>dest</code>路径下， <code>src</code>可以为<code>url</code>; 如果为<code>tar</code>文件，会自动解压到<code>dest</code>路径下</td>
+</tr>
+
+<tr>
+<td>COPY</td>
+<td>复制本地主机的<code>src</code>路径下的内容到镜像中的<code>dest</code>路径下;一般情况下推荐使用<code>COPY</code>而不是<code>ADD</code></td>
+</tr>
+
+<tr>
+<td>ENTRYPOINT</td>
+<td>指定镜像的默认入口</td>
+</tr>
+
+<tr>
+<td>VALUME</td>
+<td>创建数据卷挂载点</td>
+</tr>
+
+<tr>
+<td>USER</td>
+<td>指定运行容器时的用户名或UID</td>
+</tr>
+
+<tr>
+<td>WORKDIR</td>
+<td>配置工作目录,意指执行命令的目录</td>
+</tr>
+
+<tr>
+<td>ARG</td>
+<td>指定镜像内使用的参数</td>
+</tr>
+
+<tr>
+<td>ONBUILD</td>
+<td>配置当所创建的镜像作为其他镜像的基础镜像时，所执行的创建操作指令</td>
+</tr>
+
+<tr>
+<td>STOPSIGNAL</td>
+<td>容器退出的信号值</td>
+</tr>
+
+<tr>
+<td>HEALTHCHECK</td>
+<td>如何进行健康检查</td>
+</tr>
+
+<tr>
+<td>SHELL</td>
+<td>指定使用shell时的默认shell类型,默认值为[&ldquo;/bin/sh&rdquo;, &ldquo;-c&rdquo;]</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="创建镜像">创建镜像</h2>
+
+<pre><code class="language-bash">docker build -t 镜像名称 Dockerfile所在路径
+</code></pre>
+
+<h2 id="最佳实践">最佳实践</h2>
+
+<ol>
+<li>多动手编写一些简单的例子实践、测试</li>
+<li>在Docker Hub上提供了大量的优秀镜像和对应的Dockerfile，阅读它们来学习</li>
+<li>选择合适的基础镜像</li>
+<li>减少镜像层数，尽量合并指令，例如多个RUN可以合成一条</li>
+<li>删除临时文件和缓存文件</li>
+<li>使用<code>.dockerignore</code>忽律不必要的文件以提高生产的速度</li>
+</ol>
+</div>
+
+
+    </div>
+
+    
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.42.1" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Mac上使用brew安装supervisor &middot; peter&#39;s blog</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="peter&#39;s blog" />
+
+  
+</head>
+
+  <body class=" ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://nicefood.xin/"><h1>peter&#39;s blog</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://nicefood.xin/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2018. All rights reserved. </p>
+  </div>
+</div>
+
+    <div class="content container">
+    <div class="post">
+  <h1>Mac上使用brew安装supervisor</h1>
+  <span class="post-date">Wed, Jun 13, 2018</span>
+  <p></p>
+
+<pre><code class="language-bash"># 安装
+brew install supervisor
+
+# 启动
+supervisorctl -c /usr/local/etc/supervisord.ini
+# 配置app
+# 创建目录
+mkdir -p /usr/local/etc/supervisor.d
+# 创建 app.ini
+[program:logstash]
+directory = /Users/hylexus/app/logstash-5.2.0/bin
+command = /Users/hylexus/app/logstash-5.2.0/bin/logstash -f /Users/hylexus/app/logstash-5.2.0/my-task/echo.conf -l /Users/hylexus/app/logstash-5.2.0/logs/test-logstash.log
+autostart = false
+startsecs = 5
+autorestart = true
+startretries = 3
+user = hylexus
+redirect_stderr = true
+stdout_logfile_backups = 20
+stdout_logfile=/usr/local/var/log/logstash.log
+stdout_logfile_maxbytes=10MB
+stderr_logfile=/usr/local/var/log/logstash-err.log
+stderr_logfile_maxbytes=10MB
+
+</code></pre>
+</div>
+
+
+    </div>
+
+    
+  </body>
+</html>

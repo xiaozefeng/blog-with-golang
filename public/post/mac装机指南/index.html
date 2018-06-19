@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.42.1" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Mac装机指南 &middot; peter&#39;s blog</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="peter&#39;s blog" />
+
+  
+</head>
+
+  <body class=" ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://nicefood.xin/"><h1>peter&#39;s blog</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://nicefood.xin/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2018. All rights reserved. </p>
+  </div>
+</div>
+
+    <div class="content container">
+    <div class="post">
+  <h1>Mac装机指南</h1>
+  <span class="post-date">Wed, Jun 13, 2018</span>
+  <p></p>
+
+<h2 id="安装包管理工具-homebrew">安装包管理工具 HomeBrew</h2>
+
+<pre><code class="language-bash">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+
+<h2 id="brew-配置">brew 配置</h2>
+
+<h3 id="替换成中科大学源">替换成中科大学源</h3>
+
+<pre><code class="language-bash">替换brew.git:
+cd &quot;$(brew --repo)&quot;
+git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+
+替换homebrew-core.git:
+cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+</code></pre>
+
+<h2 id="替换-homebrew-bottles源">替换 Homebrew Bottles源</h2>
+
+<pre><code class="language-bash">echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' &gt;&gt; ~/.zshrc
+source ~/.zshrc
+</code></pre>
+
+<h3 id="还原homebrew配置-homebrew-bottles-注释掉homebrew-bottle-domain-https-mirrors-ustc-edu-cn-homebrew-bottles">还原HomeBrew配置 <code>Homebrew Bottles 注释掉HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles</code></h3>
+
+<pre><code class="language-bash">重置brew.git:
+cd &quot;$(brew --repo)&quot;
+git remote set-url origin https://github.com/Homebrew/brew.git
+
+重置homebrew-core.git:
+cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
+git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+
+</code></pre>
+
+<h3 id="brew-cask-安装">brew cask 安装</h3>
+
+<pre><code class="language-bash">brew cask
+</code></pre>
+
+<h3 id="预览软件安装">预览软件安装</h3>
+
+<pre><code class="language-bash"> brew cask install qlcolorcode &amp;&amp;
+ brew cask install qlstephen  &amp;&amp;\\
+ brew cask install qlmarkdown &amp;&amp;\\
+ brew cask install quicklook-json &amp;&amp;\\
+ brew cask install qlprettypatch &amp;&amp;\\
+ brew cask install quicklook-csv &amp;&amp;\\
+</code></pre>
+
+<h3 id="java安装">Java安装</h3>
+
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 8 - Downloads</a></p>
+
+<h3 id="命令行软件安装">命令行软件安装</h3>
+
+<pre><code class="language-bash">brew update  &amp;&amp; brew upgrade \\
+&amp;&amp; brew install git \\
+&amp;&amp; brew install go\\
+&amp;&amp; brew install tree\\
+&amp;&amp; brew install node \\
+&amp;&amp; brew install ruby\\
+&amp;&amp; brew install python3\\
+&amp;&amp; brew install mycli\\
+&amp;&amp; brew install maven\\
+&amp;&amp; brew install gradle\\
+&amp;&amp; brew install cmake\\
+&amp;&amp; brew install redis\\
+&amp;&amp; brew install httpd\\
+&amp;&amp; brew install jmeter\\
+&amp;&amp; brew install siege\\
+&amp;&amp; brew install subversion\\
+&amp;&amp; brew install tmux\\
+&amp;&amp; brew install vim\\
+&amp;&amp; brew install zsh-autosuggestions\\
+&amp;&amp; brew install mysql\\
+</code></pre>
+
+<h2 id="图形化界面软件">图形化界面软件</h2>
+
+<pre><code class="language-bash"> brew cask install alfred
+ brew cask install appcleaner
+ brew cask install cheatsheet
+ brew cask install google-chrome
+ brew cask install onepassword
+ brew cask install sublime-text
+ brew cask install totalfinder
+ brew cask install the-unarchiver
+ brew cask install appcleaner
+ brew cask install aria2gui
+ brew cask install youdaodict
+ brew cask install macvim
+ brew cask install jd-gui
+ brew cask install sequel-pro
+ brew cask install foxmail
+ brew cask install dropbox 
+</code></pre>
+
+<h2 id="配置dropbox">配置Dropbox</h2>
+
+<p><img src="http://7xv4mv.com1.z0.glb.clouddn.com/2018-04-17-073322.png" alt="" /></p>
+
+<h2 id="配置docker">配置Docker</h2>
+
+<ul>
+<li>打开Docker-&gt;Preferences&hellip;</li>
+<li>Insecure registries配置:registry.mirrors.aliyuncs.com</li>
+<li>Registry mirrors配置刚刚专属地址那里自己的镜像加速器地址即可. (<a href="https://2dipklk7.mirror.aliyuncs.com">https://2dipklk7.mirror.aliyuncs.com</a>)</li>
+</ul>
+
+<h2 id="item2-安装与配置">item2 安装与配置</h2>
+
+<p><a href="https://www.iterm2.com/downloads.html">iterm2下载页面</a></p>
+
+<h3 id="基本配置">基本配置</h3>
+
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqehp9soi9j30m40ep77u.jpg" alt="" />
+<img src="http://7xv4mv.com1.z0.glb.clouddn.com/2018-04-16-064052.png" alt="" /></p>
+
+<h3 id="powerline-字体安装">powerline 字体安装</h3>
+
+<pre><code class="language-bash"># 下载
+git clone https://github.com/powerline/fonts.git
+# 安装
+cd fonts
+./install.sh
+# 删除安装包
+cd ..
+rm -rf fonts
+</code></pre>
+
+<h2 id="ipic-下载与配置7牛云图床">ipic 下载与配置7牛云图床</h2>
+
+<p>资源: xiaozefeng
+Access Key: VrIXYo8pG5Joe61bkFZD56Gb9SER4gBwShq1y_YK
+Secret Key: MWZxZ9TSOCyXojn-G9P8zkbKsnboRG4Ml5V9HrkM
+网址前缀: <a href="http://7xv4mv.com1.z0.glb.clouddn.com">http://7xv4mv.com1.z0.glb.clouddn.com</a></p>
+
+<h2 id="软件安装列表">软件安装列表</h2>
+
+<ol>
+<li><a href="https://itunes.apple.com/cn/app/%E6%88%AA%E5%9B%BE-jietu-%E5%BF%AB%E9%80%9F%E6%A0%87%E6%B3%A8-%E4%BE%BF%E6%8D%B7%E5%88%86%E4%BA%AB%E7%9A%84%E6%88%AA%E5%B1%8F%E5%B7%A5%E5%85%B7/id1059334054?mt=12">Mac App Store 上的“截图(Jietu)-快速标注、便捷分享的截屏工具”</a></li>
+<li><a href="https://github.com/fikovnik/ShiftIt/releases">Releases · fikovnik/ShiftIt · GitHub</a></li>
+<li><a href="https://code.visualstudio.com/docs/?dv=osx">Documentation for Visual Studio Code</a></li>
+<li>bartender</li>
+<li>cornerstone</li>
+<li>idea</li>
+<li>postman</li>
+<li>pdf export</li>
+<li>visual studio code</li>
+<li>SnippetsLab</li>
+<li><a href="https://www.virtualbox.org/wiki/Downloads">Downloads – Oracle VM VirtualBox</a></li>
+<li><a href="https://justgetflux.com/news/pages/macquickstart/">Welcome to f.lux for macOS</a></li>
+<li>flux</li>
+<li>rdm</li>
+<li>印象笔记</li>
+<li><a href="https://www.teamviewer.com/zhcn/download/mac/">macOS版TeamViewer下载</a></li>
+<li><a href="http://xclient.info/s/transmit.html?t=b9f2c41fb9dbdc423533bc52178734bae89bcf94#versions">Transmit 5.1.1 一款功能齐全的FTP客户端 - 精品MAC应用分享</a></li>
+<li><a href="http://xclient.info/s/snippetslab.html?t=b9f2c41fb9dbdc423533bc52178734bae89bcf94#versions">SnippetsLab 1.7.4 构建你的私人代码片段库 - 精品MAC应用分享</a></li>
+<li><a href="https://app.getpostman.com/app/download/osx64?utm_source=site&amp;utm_medium=apps&amp;utm_campaign=macapp&amp;_ga=2.54396268.536085204.1523966954-325928436.1523966954">Download Postman</a></li>
+<li><a href="https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac">Install Docker for Mac | Docker Documentation</a>
+<br /></li>
+</ol>
+</div>
+
+
+    </div>
+
+    
+  </body>
+</html>

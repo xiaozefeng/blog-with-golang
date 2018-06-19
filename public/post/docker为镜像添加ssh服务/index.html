@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.42.1" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Docker为镜像添加SSH服务 &middot; peter&#39;s blog</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://nicefood.xin/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="peter&#39;s blog" />
+
+  
+</head>
+
+  <body class=" ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://nicefood.xin/"><h1>peter&#39;s blog</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://nicefood.xin/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2018. All rights reserved. </p>
+  </div>
+</div>
+
+    <div class="content container">
+    <div class="post">
+  <h1>Docker为镜像添加SSH服务</h1>
+  <span class="post-date">Mon, Jun 18, 2018</span>
+  <p></p>
+
+<h2 id="基于commit命令">基于commit命令</h2>
+
+<ol>
+<li>准备工作</li>
+</ol>
+
+<pre><code class="language-bash">docker run -it ubuntu:14.04 /bin/bash
+</code></pre>
+
+<ol>
+<li>安装和配置SSH服务</li>
+</ol>
+
+<pre><code class="language-bash"># 安装SSH
+apt-get update
+apt-get install openssh-server -y
+# 如果要正常使用SSH服务，必须存在/var/run/sshd,手动创建它 mkdir -p /var/run/sshd
+# 启动SSH服务
+/usr/sbin/sshd -D &amp;
+# 查看22端口
+netstat -tunlp
+# 修改SSH安装配置，取消pam登录限制
+sed -ri 's/session   required    pam_loginuid.so/#session required     pam_loginuid.so/g' /etc/pam.d/sshd
+# 将本地的公钥添加到~/.ssh/authorized_keys文件中
+mkdir root/.ssh
+vi root/.ssh/authorized_keys
+# 创建自动启动SSH的脚本
+vi /run.sh
+chmod +x /run.sh
+# 启动run.sh的内容是
+#!/bin/bash
+/usr/sbin/sshd -D
+# 最后退出容器
+exit
+</code></pre>
+
+<ol>
+<li>保存镜像</li>
+</ol>
+
+<pre><code class="language-bash"># 使用commit命令提交镜像 
+docker commit 容器id ssh:ubuntu
+# 使用镜像
+docker run -p 10022:22 -d sshd:ubuntu /run.sh
+# 查看运行后的容器
+docker ps
+# 通过ssh访问10022端口来登录容器
+ssh 本地ip -p 10022
+</code></pre>
+
+<h2 id="使用dockerfile创建">使用Dockerfile创建</h2>
+
+<ol>
+<li>在本地创建一个目录</li>
+</ol>
+
+<pre><code class="language-bash">mkdir sshd_ubuntu
+cd sshd_ubuntu
+touch Dockerfile run.sh
+</code></pre>
+
+<ol>
+<li>编写run.sh脚本和authorized_keys</li>
+</ol>
+
+<pre><code class="language-bash"># 在run.sh中输入
+#!/bin/bash
+/usr/sbin/sshd -D
+</code></pre>
+
+<ol>
+<li>编写Dockerfile(推荐)</li>
+</ol>
+
+<pre><code class="language-Dockerfile"># 设置基础镜像
+FROM ubuntu:14:04
+
+
+# 执行更新命令
+RUN apt-get update
+
+# 安装ssh服务
+RUN apt-get install -y openssh-server
+RUN mkdir -p /var/run/sshd
+RUN mkdir -p /root/.ssh
+
+# 取消pam限制
+sed -ri 's/session   required    pam_loginuid.so/#session required     pam_loginuid.so/g' /etc/pam.d/sshd
+
+# 复制配置文件到响应的位置，并且赋予脚本可执行权限
+COPY authorized_keys /root/.ssh/authorized_keys
+COPY run.sh /run.sh
+RUN chmod 755 /run.sh
+
+# 开发端口
+CMD 22
+
+# 设置启动命令
+CMD	[&quot;/run.sh&quot;]
+</code></pre>
+
+<ol>
+<li>创建镜像</li>
+</ol>
+
+<pre><code class="language-bash"># 当前路径 sshd_ubuntu
+docker build -t sshd:dockerfile .
+</code></pre>
+
+<p> 5. 测试运行</p>
+
+<pre><code class="language-bash"># 运行容器
+docker run -d -p 10122:22 sshd:dockerfile
+# 打开一个终端
+ssh root@localhost -p 10122
+</code></pre>
+</div>
+
+
+    </div>
+
+    
+  </body>
+</html>

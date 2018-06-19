@@ -1,0 +1,8 @@
+baseURL: "http://nicefood.xin/"
+languageCode: "en-us"
+title: "peter's blog"
+theme: "hyde"
+params: 
+# themeColor: "theme-base-09"
+  disqusShortname: spf13
+  layoutReverse: false 

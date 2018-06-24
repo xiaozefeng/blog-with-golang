@@ -6,10 +6,28 @@
     <description>Recent content in Posts on xiaozefeng&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Jun 2018 19:55:10 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 22 Jun 2018 22:57:17 +0800</lastBuildDate>
     
 	<atom:link href="http://www.xiaozefeng.xyz/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spring Data JPA使用Java8的LocalDateTime替换Date映射到数据库</title>
+      <link>http://www.xiaozefeng.xyz/post/springdatajpa%E4%BD%BF%E7%94%A8java8%E7%9A%84localdatetime%E6%9B%BF%E6%8D%A2date%E6%98%A0%E5%B0%84%E5%88%B0%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <pubDate>Fri, 22 Jun 2018 22:57:17 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/post/springdatajpa%E4%BD%BF%E7%94%A8java8%E7%9A%84localdatetime%E6%9B%BF%E6%8D%A2date%E6%98%A0%E5%B0%84%E5%88%B0%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot Data JPA使用@CreatedDate、@CreatedBy、@LastModifiedDate、@LastModifiedBy自动生成时间和修改者</title>
+      <link>http://www.xiaozefeng.xyz/post/springdatajpa%E4%BD%BF%E7%94%A8createddatecreatedbylastmodifieddatelastmodifiedby%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%97%B6%E9%97%B4%E5%92%8C%E4%BF%AE%E6%94%B9%E8%80%85/</link>
+      <pubDate>Fri, 22 Jun 2018 22:47:57 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/post/springdatajpa%E4%BD%BF%E7%94%A8createddatecreatedbylastmodifieddatelastmodifiedby%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%97%B6%E9%97%B4%E5%92%8C%E4%BF%AE%E6%94%B9%E8%80%85/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Mac上IDEA使用svn时每次提交都提示输入密码</title>

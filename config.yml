@@ -11,6 +11,7 @@ params:
   #category: "categories"
   #series: "series"
 
-  paginate: 10
-  paginatePath: page
-  enableRobotsTXT: true
+paginate: 10
+paginatePath: page
+enableRobotsTXT: true
+

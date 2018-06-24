@@ -2,6 +2,7 @@
 title: "Docker+Nginx搭建简单文件服务器"
 date: 2018-06-24T18:48:57+08:00
 draft: true
+tags: ["Docker"]
 ---
 
 <!--more-->

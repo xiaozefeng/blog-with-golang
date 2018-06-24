@@ -2,6 +2,7 @@
 title: "SpringBoot Data JPA使用@CreatedDate、@CreatedBy、@LastModifiedDate、@LastModifiedBy自动生成时间和修改者"
 date: 2018-06-22T22:47:57+08:00
 draft: true
+tags: ["Spring Boot"]
 ---
 
 <!--more-->

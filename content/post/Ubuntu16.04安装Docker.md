@@ -2,6 +2,7 @@
 title: "Ubuntu16.04安装Docker"
 date: 2018-06-20T19:48:50+08:00
 draft: true
+tags: ["Ubuntu"]
 ---
 <!--more-->
 

@@ -2,6 +2,7 @@
 title: "SpringCloud Eureak学习(1)"
 date: 2018-06-20T19:41:41+08:00
 draft: true
+tags: ["Spring Cloud"]
 ---
 
 <!--more-->

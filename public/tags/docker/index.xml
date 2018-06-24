@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on xiaozefeng&#39;s blog</title>
+    <link>http://www.xiaozefeng.xyz/tags/docker/</link>
+    <description>Recent content in Docker on xiaozefeng&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 24 Jun 2018 18:48:57 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.xiaozefeng.xyz/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker&#43;Nginx搭建简单文件服务器</title>
+      <link>http://www.xiaozefeng.xyz/post/docker&#43;nginx%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Sun, 24 Jun 2018 18:48:57 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/post/docker&#43;nginx%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker搭建MySQL服务</title>
+      <link>http://www.xiaozefeng.xyz/post/docker%E6%90%AD%E5%BB%BAmysql%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Wed, 20 Jun 2018 19:27:36 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/post/docker%E6%90%AD%E5%BB%BAmysql%E6%9C%8D%E5%8A%A1/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker为镜像添加SSH服务</title>
+      <link>http://www.xiaozefeng.xyz/post/docker%E4%B8%BA%E9%95%9C%E5%83%8F%E6%B7%BB%E5%8A%A0ssh%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Mon, 18 Jun 2018 22:20:17 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/post/docker%E4%B8%BA%E9%95%9C%E5%83%8F%E6%B7%BB%E5%8A%A0ssh%E6%9C%8D%E5%8A%A1/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Dockerfile创建镜像</title>
+      <link>http://www.xiaozefeng.xyz/post/%E4%BD%BF%E7%94%A8dockerfile%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F/</link>
+      <pubDate>Mon, 18 Jun 2018 20:08:52 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/post/%E4%BD%BF%E7%94%A8dockerfile%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker端口映射与容器互联</title>
+      <link>http://www.xiaozefeng.xyz/post/docker%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E4%B8%8E%E5%AE%B9%E5%99%A8%E4%BA%92%E8%81%94/</link>
+      <pubDate>Mon, 18 Jun 2018 19:16:05 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/post/docker%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E4%B8%8E%E5%AE%B9%E5%99%A8%E4%BA%92%E8%81%94/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker数据管理</title>
+      <link>http://www.xiaozefeng.xyz/post/docker%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sun, 17 Jun 2018 23:59:40 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/post/docker%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker学习</title>
+      <link>http://www.xiaozefeng.xyz/post/docker%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Wed, 13 Jun 2018 20:05:55 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/post/docker%E5%AD%A6%E4%B9%A0/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

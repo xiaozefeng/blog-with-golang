@@ -2,6 +2,7 @@
 title: "使用Dockerfile创建镜像"
 date: 2018-06-18T20:08:52+08:00
 draft: true
+tags: ["Docker"]
 ---
 
 <!--more-->

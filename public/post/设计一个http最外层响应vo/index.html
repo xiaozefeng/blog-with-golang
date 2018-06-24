@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Categories &middot; xiaozefeng&#39;s blog</title>
+  <title>设计一个HTTP最外层响应VO &middot; xiaozefeng&#39;s blog</title>
 
   
   <link type="text/css" rel="stylesheet" href="http://www.xiaozefeng.xyz/css/print.css" media="print">
@@ -23,7 +23,7 @@
   <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="http://www.xiaozefeng.xyz/categories/index.xml" rel="alternate" type="application/rss+xml" title="xiaozefeng&#39;s blog" />
+  <link href="" rel="alternate" type="application/rss+xml" title="xiaozefeng&#39;s blog" />
 
   
 </head>
@@ -48,9 +48,71 @@
 </div>
 
     <div class="content container">
-    <ul class="posts">
+    <div class="post">
+  <h1>设计一个HTTP最外层响应VO</h1>
+  <span class="post-date">Sun, Jun 24, 2018</span>
+  <p></p>
 
-</ul>
+<h2 id="直接上代码">直接上代码</h2>
+
+<pre><code class="language-java">@Getter
+public class ResultVO {
+
+    private String msg;
+    private Integer code;
+    private Object data;
+
+    private ResultVO(Status status, Object data) {
+        this.msg = status.msg;
+        this.code = status.code;
+        this.data = data;
+    }
+
+
+    private ResultVO(String msg, Integer code, Object data) {
+        this.msg = msg;
+        this.code = code;
+        this.data = data;
+    }
+
+    public ResultVO() {
+    }
+
+    @Transient
+    public Boolean isOk() {
+        return Status.SUCCESS.code.equals(this.code);
+    }
+
+    private enum Status {
+        SUCCESS(&quot;success&quot;, 200),
+        FAIL(&quot;fail&quot;, 500),
+        ;
+        String msg;
+        Integer code;
+
+        Status(String msg, Integer code) {
+            this.msg = msg;
+            this.code = code;
+        }
+    }
+
+    public static ResultVO ok() {
+        return new ResultVO(Status.SUCCESS, null);
+    }
+
+    public static ResultVO ok(Object data) {
+        return new ResultVO(Status.SUCCESS, data);
+    }
+    
+    public static ResultVO error(String msg) {
+        return new ResultVO(msg, Status.FAIL.code, null);
+    }
+}
+
+</code></pre>
+</div>
+
+
     </div>
 
     

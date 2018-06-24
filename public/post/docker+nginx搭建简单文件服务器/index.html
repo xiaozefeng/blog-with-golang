@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.42.1" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Docker&#43;Nginx搭建简单文件服务器 &middot; xiaozefeng&#39;s blog</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="http://www.xiaozefeng.xyz/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://www.xiaozefeng.xyz/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://www.xiaozefeng.xyz/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://www.xiaozefeng.xyz/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="xiaozefeng&#39;s blog" />
+
+  
+</head>
+
+  <body class=" ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://www.xiaozefeng.xyz/"><h1>xiaozefeng&#39;s blog</h1></a>
+      <p class="lead">
+	  
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://www.xiaozefeng.xyz/">Home</a> </li>
+      <li><a href="/about/"> About me </a></li><li><a href="/categories/"> Categories </a></li><li><a href="/tags/"> Tags </a></li>
+    </ul>
+
+    <p>&copy; 2018. All rights reserved. </p>
+  </div>
+</div>
+
+    <div class="content container">
+    <div class="post">
+  <h1>Docker&#43;Nginx搭建简单文件服务器</h1>
+  <span class="post-date">Sun, Jun 24, 2018</span>
+  <p></p>
+
+<h2 id="安装docker"><code>安装Docker</code></h2>
+
+<blockquote>
+<p><a href="http://www.xiaozefeng.xyz/post/ubuntu16.04%E5%AE%89%E8%A3%85docker/">Ubuntu16.04安装Docker</a><br />
+其他平台安装docker请参考 <a href="https://training.docker.com/">Docker官网</a></p>
+
+<h2 id="配置加速"><code>配置加速</code></h2>
+
+<p><a href="http://www.xiaozefeng.xyz/post/ubuntu16.04%E5%AE%89%E8%A3%85docker/">Dcoker配置阿里云加速</a></p>
+</blockquote>
+
+<h2 id="拉取nginx镜像"><code>拉取nginx镜像</code></h2>
+
+<pre><code class="language-bash">docker pull nginx
+</code></pre>
+
+<h2 id="准备工作"><code>准备工作</code></h2>
+
+<h3 id="找一个空文件夹"><code>找一个空文件夹</code></h3>
+
+<pre><code class="language-sh">mkdir file_system
+cd file_system
+</code></pre>
+
+<h3 id="创建存放nginx配置文件和需要存放的文件"><code>创建存放nginx配置文件和需要存放的文件</code></h3>
+
+<pre><code class="language-sh"># conf 下存放一些自定义的nginx配置
+# public 是你想要被外部访问的目录和文件
+mkdir conf public
+</code></pre>
+
+<h3 id="在conf目录下创建nginx配置文件-default-conf"><code>在conf目录下创建nginx配置文件 default.conf</code></h3>
+
+<p>文件内容:</p>
+
+<pre><code class="language-conf">server {
+    listen       80;
+    server_name  localhost;
+    #charset koi8-r;
+    #access_log  /var/log/nginx/log/host.access.log  main;
+
+	autoindex on;# 显示目录
+    autoindex_exact_size on;# 显示文件大小
+    autoindex_localtime on;# 显示文件时间
+	charset utf-8;# 解决文件乱码文件
+
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    #location ~ \.php$ {
+    #    root           html;
+    #    fastcgi_pass   127.0.0.1:9000;
+    #    fastcgi_index  index.php;
+    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+    #    include        fastcgi_params;
+    #}
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht {
+    #    deny  all;
+    #}
+}
+
+</code></pre>
+
+<h3 id="配置文件说明"><code>配置文件说明</code></h3>
+
+<blockquote>
+<p>除了这几行，其他内容时容器中nginx的默认配置</p>
+</blockquote>
+
+<pre><code class="language-conf">	autoindex on;# 显示目录
+    autoindex_exact_size on;# 显示文件大小
+    autoindex_localtime on;# 显示文件时间
+	charset utf-8;# 解决文件乱码文件
+</code></pre>
+
+<h2 id="创建容器"><code>创建容器</code></h2>
+
+<pre><code class="language-sh">docker run -d -p 80:80  --name fileSystem -v $PWD/conf:/etc/nginx/conf.d -v $PWD/public:/usr/share/nginx/html nginx
+</code></pre>
+
+<h2 id="体验效果"><code>体验效果</code></h2>
+
+<blockquote>
+<p>到public 目录下创建文件和目录, 然后访问</p>
+</blockquote>
+
+<p><img src="http://7xv4mv.com1.z0.glb.clouddn.com/blog/2018-06-24-110602.png" alt="" /></p>
+</div>
+
+
+    </div>
+
+    
+  </body>
+</html>

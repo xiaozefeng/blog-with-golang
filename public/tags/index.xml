@@ -6,9 +6,46 @@
     <description>Recent content in Tags on xiaozefeng&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 24 Jun 2018 18:48:57 +0800</lastBuildDate>
     
 	<atom:link href="http://www.xiaozefeng.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker</title>
+      <link>http://www.xiaozefeng.xyz/tags/docker/</link>
+      <pubDate>Sun, 24 Jun 2018 18:48:57 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spring Boot</title>
+      <link>http://www.xiaozefeng.xyz/tags/spring-boot/</link>
+      <pubDate>Fri, 22 Jun 2018 22:57:17 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/tags/spring-boot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spring Cloud</title>
+      <link>http://www.xiaozefeng.xyz/tags/spring-cloud/</link>
+      <pubDate>Wed, 20 Jun 2018 19:41:41 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/tags/spring-cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>http://www.xiaozefeng.xyz/tags/ubuntu/</link>
+      <pubDate>Wed, 20 Jun 2018 19:48:50 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/tags/ubuntu/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

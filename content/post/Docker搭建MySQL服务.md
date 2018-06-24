@@ -2,6 +2,7 @@
 title: "Docker搭建MySQL服务"
 date: 2018-06-20T19:27:36+08:00
 draft: true
+tags: ["Docker"]
 ---
 
 <!--more-->

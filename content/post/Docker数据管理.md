@@ -2,6 +2,7 @@
 title: "Docker数据管理"
 date: 2018-06-17T23:59:40+08:00
 draft: true
+tags: ["Docker"]
 ---
 
 <!--more-->

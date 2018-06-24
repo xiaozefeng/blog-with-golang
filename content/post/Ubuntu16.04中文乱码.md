@@ -2,6 +2,7 @@
 title: "Ubuntu16中文乱码问题"
 date: 2018-06-13T21:45:07+08:00
 draft: true
+tags: ["Ubuntu"]
 ---
 
 <!--more-->

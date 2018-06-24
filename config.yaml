@@ -1,0 +1,30 @@
+baseURL: "http://www.xiaozefeng.xyz/"
+languageCode: "en-us"
+title: "xiaozefeng's blog"
+theme: "hyde"
+params: 
+# themeColor: "theme-base-09"
+  disqusShortname: spf13
+  layoutReverse: false 
+
+paginate: 10
+paginatePath: page
+enableRobotsTXT: true
+
+menu:
+  main:
+  - identifier: about
+    name: About me
+    pre: <i class='fa fa-heart'></i>
+    url: /about/
+    weight: -110
+
+  - name: Categories
+    pre: <i class='fa fa-road'></i>
+    url: /categories/
+    weight: -100
+    
+  - name: Tags
+    pre: <i class='fa fa-road'></i>
+    url: /tags/
+    weight: -100

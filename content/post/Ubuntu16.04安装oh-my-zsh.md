@@ -2,6 +2,7 @@
 title: "Ubuntu16安装oh-my-zsh"
 date: 2018-06-13T21:44:36+08:00
 draft: true
+tags: ["Ubuntu"]
 ---
 
 <!--more-->

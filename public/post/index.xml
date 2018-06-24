@@ -6,10 +6,28 @@
     <description>Recent content in Posts on xiaozefeng&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 Jun 2018 22:57:17 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 24 Jun 2018 18:48:57 +0800</lastBuildDate>
     
 	<atom:link href="http://www.xiaozefeng.xyz/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker&#43;Nginx搭建简单文件服务器</title>
+      <link>http://www.xiaozefeng.xyz/post/docker&#43;nginx%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Sun, 24 Jun 2018 18:48:57 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/post/docker&#43;nginx%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>设计一个HTTP最外层响应VO</title>
+      <link>http://www.xiaozefeng.xyz/post/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AAhttp%E6%9C%80%E5%A4%96%E5%B1%82%E5%93%8D%E5%BA%94vo/</link>
+      <pubDate>Sun, 24 Jun 2018 12:44:18 +0800</pubDate>
+      
+      <guid>http://www.xiaozefeng.xyz/post/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AAhttp%E6%9C%80%E5%A4%96%E5%B1%82%E5%93%8D%E5%BA%94vo/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Spring Data JPA使用Java8的LocalDateTime替换Date映射到数据库</title>

@@ -2,6 +2,7 @@
 title: "Docker为镜像添加SSH服务"
 date: 2018-06-18T22:20:17+08:00
 draft: true
+tags: ["Docker"]
 ---
 
 <!--more-->

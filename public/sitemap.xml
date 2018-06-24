@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.xiaozefeng.xyz/about/</loc>
+    <lastmod>2018-06-24T21:50:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.xiaozefeng.xyz/post/docker&#43;nginx%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <lastmod>2018-06-24T18:48:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.xiaozefeng.xyz/post/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AAhttp%E6%9C%80%E5%A4%96%E5%B1%82%E5%93%8D%E5%BA%94vo/</loc>
+    <lastmod>2018-06-24T12:44:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.xiaozefeng.xyz/post/springdatajpa%E4%BD%BF%E7%94%A8java8%E7%9A%84localdatetime%E6%9B%BF%E6%8D%A2date%E6%98%A0%E5%B0%84%E5%88%B0%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2018-06-22T22:57:17+08:00</lastmod>
   </url>
@@ -123,19 +138,44 @@
   </url>
   
   <url>
+    <loc>http://www.xiaozefeng.xyz/tags/docker/</loc>
+    <lastmod>2018-06-24T18:48:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.xiaozefeng.xyz/post/</loc>
+    <lastmod>2018-06-24T18:48:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.xiaozefeng.xyz/tags/spring-boot/</loc>
     <lastmod>2018-06-22T22:57:17+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.xiaozefeng.xyz/tags/spring-cloud/</loc>
+    <lastmod>2018-06-20T19:41:41+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.xiaozefeng.xyz/tags/</loc>
+    <lastmod>2018-06-24T18:48:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.xiaozefeng.xyz/tags/ubuntu/</loc>
+    <lastmod>2018-06-20T19:48:50+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://www.xiaozefeng.xyz/</loc>
-    <lastmod>2018-06-22T22:57:17+08:00</lastmod>
+    <lastmod>2018-06-24T21:50:12+08:00</lastmod>
     <priority>0</priority>
   </url>
   
